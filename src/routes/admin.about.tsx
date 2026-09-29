@@ -1,0 +1,3 @@
+import { createFileRoute } from '@tanstack/react-router'
+import { SettingsEditor } from '@/components/admin-settings'
+export const Route=createFileRoute('/admin/about')({component:()=> <SettingsEditor mode="about"/>,head:()=>({meta:[{title:'About Editor — Laurel’s Organized Chaos'},{name:'description',content:'Edit About content.'},{property:'og:title',content:'About Editor — Laurel’s Organized Chaos'},{property:'og:description',content:'Edit About content.'},{property:'og:type',content:'website'},{name:'twitter:card',content:'summary'}]})})

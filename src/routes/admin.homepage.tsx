@@ -1,0 +1,3 @@
+import { createFileRoute } from '@tanstack/react-router'
+import { SettingsEditor, CollectionEditor } from '@/components/admin-settings'
+export const Route=createFileRoute('/admin/homepage')({component:()=> <><SettingsEditor mode="homepage"/><div className="admin-content admin-secondary"><CollectionEditor type="currently_items"/><CollectionEditor type="homepage_notes"/></div></>,head:()=>({meta:[{title:'Homepage Editor — Laurel’s Organized Chaos'},{name:'description',content:'Edit homepage content.'},{property:'og:title',content:'Homepage Editor — Laurel’s Organized Chaos'},{property:'og:description',content:'Edit homepage content.'},{property:'og:type',content:'website'},{name:'twitter:card',content:'summary'}]})})

@@ -1,0 +1,4 @@
+import { createFileRoute } from '@tanstack/react-router'
+import { AdminPage } from '@/components/admin'
+import { CollectionEditor } from '@/components/admin-settings'
+export const Route=createFileRoute('/admin/categories')({component:()=> <AdminPage title="Categories" description="Keep the journal shelves arranged your way."><CollectionEditor type="categories"/></AdminPage>,head:()=>({meta:[{title:'Categories — Laurel’s Organized Chaos'},{name:'description',content:'Manage journal categories.'},{property:'og:title',content:'Categories — Laurel’s Organized Chaos'},{property:'og:description',content:'Manage journal categories.'},{property:'og:type',content:'website'},{name:'twitter:card',content:'summary'}]})})

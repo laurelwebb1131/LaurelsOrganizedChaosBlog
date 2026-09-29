@@ -1,0 +1,7 @@
+import { createFileRoute, Link } from '@tanstack/react-router'
+import { useSuspenseQuery } from '@tanstack/react-query'
+import { ArrowUpRight } from 'lucide-react'
+import { contentQuery } from '@/lib/content'
+import { Shell, art } from '@/components/site'
+export const Route=createFileRoute('/about')({loader:({context})=>context.queryClient.ensureQueryData(contentQuery),head:()=>({meta:[{title:"About Laurel — Laurel's Organized Chaos"},{name:'description',content:'Meet the person behind the pages at Laurel’s Organized Chaos.'},{property:'og:title',content:'About Laurel — Laurel’s Organized Chaos'},{property:'og:description',content:'Meet the person behind the pages.'},{property:'og:type',content:'website'},{name:'twitter:card',content:'summary_large_image'}]}),component:About})
+function About(){const {data}=useSuspenseQuery(contentQuery);return <Shell><main className="wrap page-main about-page"><div className="about-portrait"><img src={data.settings?.about_image||art} alt={data.settings?.about_image?'Portrait of Laurel':'Crow and crescent moon illustration'}/><span>✦ THE PERSON BEHIND THE PAGES ✦</span></div><div className="about-copy"><span className="eyebrow">THE HUMAN IN THE MIDDLE OF IT ALL</span><h1>Oh, <em>hello there.</em></h1><p className="lead">{data.settings?.about_preview}</p><div className="about-body">{data.settings?.about_body?.split('\n').map((p,i)=><p key={i}>{p}</p>)}</div><Link to="/contact" className="primary-link">Say hello <ArrowUpRight size={18}/></Link></div></main></Shell>}
