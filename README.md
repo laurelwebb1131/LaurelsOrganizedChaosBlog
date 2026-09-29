@@ -55,6 +55,7 @@ Fill in the Supabase values in `.env` before using authentication, the admin are
 Required environment variables:
 
 ```env
+OWNER_EMAIL=
 SUPABASE_PROJECT_ID=
 SUPABASE_PUBLISHABLE_KEY=
 SUPABASE_SERVICE_ROLE_KEY=
@@ -64,7 +65,7 @@ VITE_SUPABASE_PUBLISHABLE_KEY=
 VITE_SUPABASE_URL=
 ```
 
-The `SUPABASE_SERVICE_ROLE_KEY` is server-only. Never prefix it with `VITE_`, expose it to browser code, or commit the real `.env` file.
+The `OWNER_EMAIL` and `SUPABASE_SERVICE_ROLE_KEY` values are server-only. Never prefix it with `VITE_`, expose it to browser code, or commit the real `.env` file.
 
 ## Useful commands
 
