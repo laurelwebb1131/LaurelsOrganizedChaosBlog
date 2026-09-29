@@ -21,6 +21,7 @@ import {
 import { supabase } from '@/integrations/supabase/client'
 import { AdminPage, ImageUpload, uploadImage, useTable } from '@/components/admin'
 import { Button } from '@/components/ui/button'
+import { refreshStoredImageUrls } from '@/lib/editor-media'
 
 const initial = {
   title: '',
@@ -48,11 +49,27 @@ export function PostEditor({ id }: { id?: string }) {
   const [bodyHydrated, setBodyHydrated] = useState(!id)
   const { rows: categories } = useTable('categories')
 
+  const StoredImage = Image.extend({
+  addAttributes() {
+    return {
+      ...this.parent?.(),
+      storagePath: {
+        default: null,
+        parseHTML: (element) => element.getAttribute('data-storage-path'),
+        renderHTML: (attributes) =>
+          attributes.storagePath
+            ? { 'data-storage-path': attributes.storagePath }
+            : {},
+      },
+    }
+  },
+})
+
   const editor = useEditor({
     extensions: [
       StarterKit,
       LinkExtension.configure({ openOnClick: false }),
-      Image,
+      StoredImage,
     ],
     content: '',
     immediatelyRender: false,
@@ -94,13 +111,15 @@ export function PostEditor({ id }: { id?: string }) {
         return
       }
 
+      const refreshedBody = await refreshStoredImageUrls(data.body ?? '')
+
       setForm({
         ...initial,
         ...data,
         title: data.title ?? '',
         slug: data.slug ?? '',
         excerpt: data.excerpt ?? '',
-        body: data.body ?? '',
+        body: refreshedBody,
         featured_image: data.featured_image ?? '',
         featured_image_alt: data.featured_image_alt ?? '',
         category_id: data.category_id ?? '',
@@ -110,7 +129,7 @@ export function PostEditor({ id }: { id?: string }) {
         status: data.status ?? 'draft',
         published_at: data.published_at ?? null,
       })
-      setBodyHtml(data.body ?? '')
+      setBodyHtml(refreshedBody)
       setLoaded(true)
     }
 
@@ -212,7 +231,18 @@ export function PostEditor({ id }: { id?: string }) {
           .createSignedUrl(path, 3600)
 
         if (data?.signedUrl) {
-          editor?.chain().focus().setImage({ src: data.signedUrl, alt: file.name }).run()
+          editor
+            ?.chain()
+            .focus()
+            .insertContent({
+              type: 'image',
+              attrs: {
+                src: data.signedUrl,
+                alt: file.name,
+                storagePath: path,
+              },
+            })
+            .run()
         }
       } catch {
         setError('Image upload failed.')
