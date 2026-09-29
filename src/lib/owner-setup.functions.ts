@@ -24,7 +24,7 @@ export const getSetupStatus = createServerFn({ method: 'GET' }).handler(async ()
 }))
 
 export const createOwner = createServerFn({ method: 'POST' })
-  .inputValidator((data) =>
+  .validator((data) =>
     z
       .object({
         email: z.string().email(),
