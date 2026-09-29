@@ -26,7 +26,7 @@ function Home() {
   <div className="marquee"><span>✦ LIFE IS A LITTLE MESSY ✦ AND THAT'S WHERE THE MAGIC LIVES ✦ LIFE IS A LITTLE MESSY ✦ AND THAT'S WHERE THE MAGIC LIVES ✦</span></div>
 
   <section className="collage-stage wrap">
-   <div className="collage-stars" aria-hidden="true">✦　·　☾　·　✧</div>
+   <div className="collage-stars" aria-hidden="true">✦ · ☾ · ✧</div>
    <div className="collage-photos">
     <SectionLabel number="01">little moments</SectionLabel><span className="washi washi-pink"/><span className="pressed-flower" aria-hidden="true">❋</span>
     <div className="polaroid-cluster">{photos.length ? photos.slice(0,3).map((photo,i)=><Polaroid key={photo.id} photo={photo} index={i}/>) : <><figure className="polaroid polaroid-0 placeholder-polaroid"><div className="photo-placeholder"><Sparkles/><span>add a favorite moment</span></div><figcaption>your photos live here ♡</figcaption></figure><figure className="polaroid polaroid-1 placeholder-polaroid"><div className="photo-placeholder"><Moon/><span>add another snapshot</span></div><figcaption>saved for later ✷</figcaption></figure></>}</div>
@@ -40,7 +40,7 @@ function Home() {
    </div>
 
    <aside className="collage-about">
-    <div className="about-tarot"><Potion className="doodle-potion"/><Owl className="doodle-owl-tarot"/><div className="tarot-inner"><div className="tarot-top">✦ THE PERSON BEHIND THE PAGES ✦</div><div className="tarot-corners" aria-hidden="true">☾　✧　☽</div><div className="tarot-illustration">{settings?.about_image?<img src={settings.about_image} alt="Portrait of Laurel"/>:<img src={art} alt="Illustrated crow and crescent moon"/>}</div><div className="tarot-moon">☾ ✧ ☽</div><h2>About Me</h2><p>{settings?.about_preview || 'Add a short introduction in the owner area.'}</p><Link className="tarot-button" to="/about">More about me <ArrowUpRight size={15}/></Link></div></div>
+    <div className="about-tarot"><Potion className="doodle-potion"/><Owl className="doodle-owl-tarot"/><div className="tarot-inner"><div className="tarot-top">✦ THE PERSON BEHIND THE PAGES ✦</div><div className="tarot-corners" aria-hidden="true">☾ ✧ ☽</div><div className="tarot-illustration">{settings?.about_image?<img src={settings.about_image} alt="Portrait of Laurel"/>:<img src={art} alt="Illustrated crow and crescent moon"/>}</div><div className="tarot-moon">☾ ✧ ☽</div><h2>About Me</h2><p>{settings?.about_preview || 'Add a short introduction in the owner area.'}</p><Link className="tarot-button" to="/about">More about me <ArrowUpRight size={15}/></Link></div></div>
     {notes.slice(0,1).map(note=><div key={note.id} className="note-scrap scrap-0"><span>✳ A LITTLE NOTE</span><p>{note.body}</p><span className="note-star">✦</span></div>)}
    </aside>
   </section>
