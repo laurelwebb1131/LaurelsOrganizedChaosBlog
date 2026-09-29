@@ -1,29 +1,102 @@
-# Welcome to your Lovable project
+# Laurel's Organized Chaos Blog
 
-This project was built with [Lovable](https://lovable.dev).
+The new full-stack home for **Laurel's Organized Chaos**: a personal blog and digital scrapbook with a public witchy-gothic site and a private owner-only content editor.
 
-## Build with Lovable
+This repository was copied from the working Lovable Version 1 snapshot on September 29, 2026 so development can continue directly in GitHub without spending Lovable credits.
 
-Open your project in the [Lovable editor](https://lovable.dev) and keep building.
+## Current Version 1
 
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: connect the project to GitHub and every change made in Lovable is committed straight to your repository.
-- **Full ownership**: this code is yours. Push to your repository and your changes sync back into Lovable, ready for your next prompt.
+Public pages:
 
-## Development
+- Home
+- Blog
+- Individual blog posts
+- About
+- Contact
+- Privacy
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+Private owner tools:
+
+- Dashboard
+- Blog posts and drafts
+- Photo management
+- Homepage content
+- Categories
+- About content
+- Contact messages
+- Site settings
+
+The public design uses the approved Laurel's Organized Chaos direction: black-first scrapbook styling with hot pink, purple, blue, and silver; crooked paper tabs; Polaroids; torn journal pieces; tarot-style panels; crows; owls; moons; stars; crystals; tape; staples; and hand-drawn details.
+
+## Technology
+
+- React 19
+- TanStack Start / TanStack Router
+- TypeScript
+- Vite
+- Supabase authentication, PostgreSQL, and storage
+- TipTap rich-text editor
+- Tailwind CSS / shadcn-style UI components
+
+## Local development
+
+Bun is recommended because this repository includes a Bun lockfile.
 
 ```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
-npm run dev
+git clone https://github.com/laurelwebb1131/LaurelsOrganizedChaosBlog.git
+cd LaurelsOrganizedChaosBlog
+bun install
+cp .env.example .env
+bun run dev
 ```
 
-## Built with
+Fill in the Supabase values in `.env` before using authentication, the admin area, database content, or image uploads.
 
-- TanStack Start
-- TypeScript
-- React
-- Tailwind CSS
+Required environment variables:
+
+```env
+SUPABASE_PROJECT_ID=
+SUPABASE_PUBLISHABLE_KEY=
+SUPABASE_URL=
+VITE_SUPABASE_PROJECT_ID=
+VITE_SUPABASE_PUBLISHABLE_KEY=
+VITE_SUPABASE_URL=
+```
+
+Never commit the real `.env` file.
+
+## Useful commands
+
+```sh
+bun run dev
+bun run build
+bun run lint
+bun run format
+```
+
+Every push to `main` also runs the free GitHub Actions validation workflow.
+
+## Database
+
+The Supabase schema migrations from the working Version 1 app are preserved under:
+
+```
+supabase/migrations/
+```
+
+They include the blog/CMS tables, owner authorization rules, storage access, and the public-read permission fix that allows published posts and visible photos to appear for logged-out visitors.
+
+## Current maintenance status
+
+- GitHub build: passing
+- GitHub lint: passing
+- Published post/photo public visibility: fixed in the source snapshot
+- New/Edit Post routing: fixed
+- Draft reopening race between Supabase and TipTap: fixed in this repository
+- Real production deployment: not performed yet
+
+## Repository history
+
+This repository is intentionally separate from the older `LaurelsOrganizedChaos` GitHub repository. The older repository contains unrelated earlier work and was not overwritten.
+
+The Lovable project remains available as a visual/reference build, but GitHub is now the working source for continued no-credit development.
