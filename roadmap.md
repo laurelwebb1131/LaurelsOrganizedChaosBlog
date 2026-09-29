@@ -1,0 +1,5 @@
+- [x] Public scrapbook homepage, blog, post, About, Contact
+- [x] Cloud data, owner-only authorization, image storage, contact submissions
+- [x] Owner login and admin editing for posts, homepage, categories, photos, notes, settings
+- [ ] Verify public and admin flows
+- [ ] Laurel sets her password at /owner-setup
