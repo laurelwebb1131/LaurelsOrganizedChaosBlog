@@ -57,13 +57,14 @@ Required environment variables:
 ```env
 SUPABASE_PROJECT_ID=
 SUPABASE_PUBLISHABLE_KEY=
+SUPABASE_SERVICE_ROLE_KEY=
 SUPABASE_URL=
 VITE_SUPABASE_PROJECT_ID=
 VITE_SUPABASE_PUBLISHABLE_KEY=
 VITE_SUPABASE_URL=
 ```
 
-Never commit the real `.env` file.
+The `SUPABASE_SERVICE_ROLE_KEY` is server-only. Never prefix it with `VITE_`, expose it to browser code, or commit the real `.env` file.
 
 ## Useful commands
 
