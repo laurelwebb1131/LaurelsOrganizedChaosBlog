@@ -1,0 +1,1 @@
+CREATE SCHEMA IF NOT EXISTS private; REVOKE ALL ON SCHEMA private FROM PUBLIC; GRANT USAGE ON SCHEMA private TO authenticated; ALTER FUNCTION public.is_owner() SET SCHEMA private; REVOKE ALL ON FUNCTION private.is_owner() FROM PUBLIC, anon; GRANT EXECUTE ON FUNCTION private.is_owner() TO authenticated;
