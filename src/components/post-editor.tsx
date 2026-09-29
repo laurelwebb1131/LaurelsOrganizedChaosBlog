@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react'
-import { Link, useNavigate } from '@tanstack/react-router'
+import { useEffect, useRef, useState } from 'react'
+import { Link, useBlocker, useNavigate } from '@tanstack/react-router'
 import { EditorContent, useEditor } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import LinkExtension from '@tiptap/extension-link'
@@ -47,7 +47,29 @@ export function PostEditor({ id }: { id?: string }) {
   const [loaded, setLoaded] = useState(!id)
   const [bodyHtml, setBodyHtml] = useState('')
   const [bodyHydrated, setBodyHydrated] = useState(!id)
+  const [dirty, setDirty] = useState(false)
+  const dirtyRef = useRef(false)
   const { rows: categories } = useTable('categories')
+
+  function markDirty() {
+    dirtyRef.current = true
+    setDirty(true)
+  }
+
+  function markClean() {
+    dirtyRef.current = false
+    setDirty(false)
+  }
+
+  useBlocker({
+    shouldBlockFn: () => {
+      if (!dirtyRef.current || busy) return false
+      return !window.confirm(
+        'You have unsaved changes. Leave this page and lose them?',
+      )
+    },
+    enableBeforeUnload: () => dirtyRef.current && !busy,
+  })
 
   const StoredImage = Image.extend({
   addAttributes() {
@@ -73,6 +95,7 @@ export function PostEditor({ id }: { id?: string }) {
     ],
     content: '',
     immediatelyRender: false,
+    onUpdate: () => markDirty(),
   })
 
   // Load the database row independently from TipTap initialization.
@@ -86,6 +109,7 @@ export function PostEditor({ id }: { id?: string }) {
       setBodyHtml('')
       setBodyHydrated(true)
       setLoadError('')
+      markClean()
       setLoaded(true)
       return () => {
         cancelled = true
@@ -130,6 +154,7 @@ export function PostEditor({ id }: { id?: string }) {
         published_at: data.published_at ?? null,
       })
       setBodyHtml(refreshedBody)
+      markClean()
       setLoaded(true)
     }
 
@@ -145,9 +170,11 @@ export function PostEditor({ id }: { id?: string }) {
     if (!id || !loaded || !editor || bodyHydrated || loadError) return
     editor.commands.setContent(bodyHtml || '', { emitUpdate: false })
     setBodyHydrated(true)
+    markClean()
   }, [bodyHtml, bodyHydrated, editor, id, loadError, loaded])
 
   function field(key: keyof typeof initial, value: string) {
+    markDirty()
     setForm((current) => ({ ...current, [key]: value }))
   }
 
@@ -205,6 +232,7 @@ export function PostEditor({ id }: { id?: string }) {
       return
     }
 
+    markClean()
     await navigate({ to: '/admin/posts' })
   }
 
@@ -296,6 +324,7 @@ export function PostEditor({ id }: { id?: string }) {
                 value={form.title}
                 onChange={(event) => {
                   const title = event.target.value
+                  markDirty()
                   setForm((current) => ({
                     ...current,
                     title,
@@ -359,7 +388,12 @@ export function PostEditor({ id }: { id?: string }) {
 
         <div className="editor-side">
           <section className="admin-section editor-form">
-            <h2>Publishing</h2>
+            <div className="admin-section-head">
+              <h2>Publishing</h2>
+              <span className={dirty ? 'save-status unsaved' : 'save-status'}>
+                {dirty ? 'Unsaved changes' : id ? 'All changes saved' : 'Not saved yet'}
+              </span>
+            </div>
             <label>
               URL slug
               <input
