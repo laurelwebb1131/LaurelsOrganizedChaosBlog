@@ -79,8 +79,8 @@ export function PostEditor({ id }: { id?: string }) {
         default: null,
         parseHTML: (element) => element.getAttribute('data-storage-path'),
         renderHTML: (attributes) =>
-          attributes.storagePath
-            ? { 'data-storage-path': attributes.storagePath }
+          attributes['storagePath']
+            ? { 'data-storage-path': attributes['storagePath'] }
             : {},
       },
     }
@@ -116,6 +116,7 @@ export function PostEditor({ id }: { id?: string }) {
       }
     }
 
+    const postId = id
     setLoaded(false)
     setLoadError('')
     setBodyHydrated(false)
@@ -124,7 +125,7 @@ export function PostEditor({ id }: { id?: string }) {
       const { data, error: queryError } = await supabase
         .from('blog_posts')
         .select('*')
-        .eq('id', id)
+        .eq('id', postId)
         .single()
 
       if (cancelled) return
