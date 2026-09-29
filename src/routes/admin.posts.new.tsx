@@ -1,0 +1,3 @@
+import { createFileRoute } from '@tanstack/react-router'
+import { PostEditor } from '@/components/post-editor'
+export const Route=createFileRoute('/admin/posts/new')({component:()=> <PostEditor/>,head:()=>({meta:[{title:'New Post — Laurel’s Organized Chaos'},{name:'description',content:'Write a journal entry.'},{property:'og:title',content:'New Post — Laurel’s Organized Chaos'},{property:'og:description',content:'Write a journal entry.'},{property:'og:type',content:'website'},{name:'twitter:card',content:'summary'}]})})

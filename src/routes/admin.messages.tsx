@@ -1,0 +1,7 @@
+import { createFileRoute } from '@tanstack/react-router'
+import { AdminPage, useTable } from '@/components/admin'
+import { Button } from '@/components/ui/button'
+import { supabase } from '@/integrations/supabase/client'
+import { Trash2 } from 'lucide-react'
+export const Route=createFileRoute('/admin/messages')({component:Messages,head:()=>({meta:[{title:'Contact Messages — Laurel’s Organized Chaos'},{name:'description',content:'Read private contact messages.'},{property:'og:title',content:'Contact Messages — Laurel’s Organized Chaos'},{property:'og:description',content:'Read private contact messages.'},{property:'og:type',content:'website'},{name:'twitter:card',content:'summary'}]})})
+function Messages(){const {rows,refresh}=useTable('contact_messages');return <AdminPage title="Contact Messages" description="The notes people have sent your way."><div className="message-list">{rows.length?rows.map(m=><article className="admin-section message-card" key={m.id}><div><span>{new Date(m.created_at).toLocaleString()}</span><Button variant="ghost" size="icon" title="Delete message" aria-label="Delete message" onClick={async()=>{if(confirm('Delete this message?')){await supabase.from('contact_messages').delete().eq('id',m.id);refresh()}}}><Trash2/></Button></div><h2>{m.name}</h2><a href={`mailto:${m.email}`}>{m.email}</a><p>{m.message}</p></article>):<div className="admin-section admin-empty">No messages yet.</div>}</div></AdminPage>}
