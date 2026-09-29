@@ -1,7 +1,7 @@
 import { Link } from '@tanstack/react-router'
 import { Moon, Star, Sparkles, BookOpen, ArrowUpRight, Instagram, Mail, Feather, Menu, X } from 'lucide-react'
 import { useState } from 'react'
-import crowArt from '@/assets/crow-moon.jpg'
+import crowArt from '@/assets/crow-moon.svg'
 import { Button } from '@/components/ui/button'
 import type { getPublicContent } from '@/lib/content.functions'
 
