@@ -15,7 +15,7 @@ export async function refreshStoredImageUrls(html: string) {
 
   await Promise.all(
     images.map(async (image) => {
-      const path = image.dataset.storagePath
+      const path = image.dataset['storagePath']
       if (!path) return
 
       const { data, error } = await supabase.storage
