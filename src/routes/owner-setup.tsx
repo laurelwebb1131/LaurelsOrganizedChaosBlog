@@ -24,7 +24,7 @@ function Setup() {
   const [error, setError] = useState('')
   const [done, setDone] = useState(false)
   const [busy, setBusy] = useState(false)
-  useEffect(() => { status().then((r) => setOpen(r.open)).catch(() => setOpen(false)) }, [])
+  useEffect(() => { status().then((r) => setOpen(r.open)).catch(() => setOpen(false)) }, [status])
   async function submit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault(); setError('')
     const f = new FormData(e.currentTarget)
