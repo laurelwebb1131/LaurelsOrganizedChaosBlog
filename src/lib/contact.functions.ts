@@ -10,7 +10,7 @@ const contactSchema = z.object({
 })
 
 export const submitContactMessage = createServerFn({ method: 'POST' })
-  .inputValidator((data) => contactSchema.parse(data))
+  .validator((data) => contactSchema.parse(data))
   .handler(async ({ data }) => {
     // Honeypot + minimum human interaction time. Return success quietly so
     // simple bots do not learn which anti-spam check they tripped.
