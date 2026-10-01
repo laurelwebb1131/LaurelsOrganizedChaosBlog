@@ -1,5 +1,6 @@
 {
   "generatedFrom": "Laurels Organized Chaos approved asset pack",
+  "backgroundCleanup": "edge-connected near-black pixels <= 8",
   "assets": {
     "logo-main.webp": {
       "source": "atlas-critical.webp",
