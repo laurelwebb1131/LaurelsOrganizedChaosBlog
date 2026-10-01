@@ -36,5 +36,6 @@ jobs:
             echo "No generated asset changes."
           else
             git commit -m "Materialize approved homepage art assets"
+            git pull --rebase origin homepage-final-mockup
             git push origin HEAD:homepage-final-mockup
           fi
