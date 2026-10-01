@@ -274,3 +274,22 @@
   .final-about-section{padding:42px 15px 50px}
   .final-about-paper{padding:28px 22px}
 }
+
+/* Precision pass 2: lock desktop silhouette to approved mockup */
+@media (min-width:761px){
+  .final-hero{min-height:585px;padding-top:64px;padding-bottom:38px}
+  .asset-logo-main{width:min(460px,100%);margin:-7px auto -6px}
+  .final-title-wrap{width:min(475px,47vw);transform:none}
+  .asset-hero-moon{top:48px;right:2%;width:min(33vw,355px)}
+  .final-crow-scene{left:3.2%;bottom:3%;width:min(31vw,340px);height:365px}
+  .asset-crow-on-books{left:-10px;width:104%}
+  .asset-hero-world{left:31%;bottom:2%;width:min(70vw,790px);max-height:420px}
+  .final-about-section{min-height:235px;padding:16px 28px 22px}
+  .final-about-decor{min-height:180px}
+  .final-about-paper{padding:19px 30px 18px}
+  .final-about-paper h2{font-size:30px;margin-bottom:6px}
+  .final-about-paper p{font-size:10px;line-height:1.45;margin-bottom:7px}
+  .asset-about-polaroid{width:175px;top:0}
+  .asset-note-mess-magic{width:105px}
+  .asset-about-book-mug{bottom:-5px}
+}
