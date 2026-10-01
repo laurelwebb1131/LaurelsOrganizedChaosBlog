@@ -39,16 +39,16 @@ jobs:
       - name: Wait for homepage
         run: |
           for i in {1..60}; do
-            if curl -fsS http://127.0.0.1:5173/ >/dev/null; then exit 0; fi
+            if curl -fsS http://127.0.0.1:3000/ >/dev/null; then exit 0; fi
             sleep 2
           done
           cat /tmp/mock.log || true
           cat /tmp/app.log || true
           exit 1
       - name: Capture approved-size desktop
-        run: npx -y playwright@1.55.0 screenshot --browser=chromium --viewport-size="1102,1408" --full-page http://127.0.0.1:5173/ qa-desktop.png
+        run: npx -y playwright@1.55.0 screenshot --browser=chromium --viewport-size="1102,1408" --full-page http://127.0.0.1:3000/ qa-desktop.png
       - name: Capture mobile
-        run: npx -y playwright@1.55.0 screenshot --browser=chromium --viewport-size="390,844" --full-page http://127.0.0.1:5173/ qa-mobile.png
+        run: npx -y playwright@1.55.0 screenshot --browser=chromium --viewport-size="390,844" --full-page http://127.0.0.1:3000/ qa-mobile.png
       - uses: actions/upload-artifact@v4
         with:
           name: homepage-visual-qa
