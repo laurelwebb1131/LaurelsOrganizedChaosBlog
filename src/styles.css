@@ -137,3 +137,45 @@
 .public-shell:has(.final-home) .nav-tab:hover,.public-shell:has(.final-home) .nav-tab[data-status=active]{transform:none;background:transparent;color:#ff83ca}
 .public-shell:has(.final-home) .nav-tab[data-status=active]:after{content:"";position:absolute;height:2px;left:2px;right:2px;bottom:2px;background:#d83a9e;box-shadow:0 0 10px #e75bb5}
 @media(max-width:760px){.public-shell:has(.final-home) .site-header{height:62px}.public-shell:has(.final-home) .site-header-inner{height:62px;width:calc(100% - 28px);justify-content:flex-end}.public-shell:has(.final-home) .wordmark-small{display:flex;position:absolute;left:0;transform:none}.public-shell:has(.final-home) .wordmark-small span{font-size:24px}.public-shell:has(.final-home) .wordmark-small strong{font-size:11px}.public-shell:has(.final-home) .mobile-menu{display:inline-flex!important;color:#f8d8eb}.public-shell:has(.final-home) .nav-tabs{position:absolute;top:60px;right:0;height:auto;width:min(280px,86vw);display:none;padding:14px;background:#0d0914;border:1px solid #62445c;box-shadow:0 18px 36px rgba(0,0,0,.5);gap:4px}.public-shell:has(.final-home) .nav-tabs.open{display:flex;flex-direction:column;align-items:stretch}.public-shell:has(.final-home) .nav-tab{display:block;padding:13px 16px;text-align:left}.public-shell:has(.final-home) .nav-tab[data-status=active]:after{left:16px;right:auto;width:44px;bottom:7px}}
+
+
+/* ===== GENERATED ART ASSET HOOKS =====
+   Art files are optional at runtime. Every placement has a CSS/semantic fallback. */
+.final-generated-asset{position:absolute;display:block;pointer-events:none;user-select:none;-webkit-user-drag:none}
+.asset-hero-moon{z-index:1;top:42px;right:2.5%;width:min(49vw,700px);mix-blend-mode:screen;opacity:.96;filter:drop-shadow(0 0 34px rgba(255,125,211,.32))}
+.final-hero:has(.asset-hero-moon:not([hidden])) .final-moon{opacity:.2}
+.asset-hero-world{z-index:1;left:25%;right:0;bottom:15%;width:min(78vw,1120px);max-height:610px;object-fit:contain;object-position:right bottom;mix-blend-mode:screen;opacity:.93;filter:saturate(1.06) contrast(1.03)}
+.final-hero:has(.asset-hero-world:not([hidden])) .final-skyline{opacity:.16}
+.asset-celestial-chain{z-index:2;top:13px;left:31%;width:min(60vw,850px);mix-blend-mode:screen;opacity:.76}
+.asset-lanterns-top{z-index:2;top:3px;left:-1%;width:min(45vw,650px);height:235px;object-fit:cover;object-position:left top;mix-blend-mode:screen;opacity:.52}
+.asset-logo-main{position:relative;z-index:4;width:min(760px,100%);height:auto;margin:-38px auto -6px;mix-blend-mode:screen;filter:drop-shadow(0 12px 18px rgba(0,0,0,.55))}
+.final-title-wrap:has(.asset-logo-main:not([hidden])) .final-celestial-crown{display:none}
+.final-title-wrap:has(.asset-logo-main:not([hidden])) .final-title-text-fallback{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+.asset-crow-on-books{inset:-25px -15px auto -40px;width:118%;height:100%;object-fit:contain;object-position:left bottom;mix-blend-mode:screen;filter:drop-shadow(0 18px 16px rgba(0,0,0,.6));z-index:3}
+.final-crow-scene:has(.asset-crow-on-books:not([hidden])) .final-crow-fallback,.final-crow-scene:has(.asset-crow-on-books:not([hidden])) .final-book-stack{opacity:0}
+.asset-paths-floral-border{z-index:2;left:0;right:0;top:-78px;width:100%;height:130px;object-fit:cover;object-position:center bottom;mix-blend-mode:screen;opacity:.72}
+.asset-note-moments{left:-112px;top:94px;width:180px;transform:rotate(-5deg);mix-blend-mode:multiply;opacity:.98;z-index:3}
+.final-latest-inner:has(.asset-note-moments:not([hidden])) .final-margin-left{opacity:0}
+.asset-about-polaroid{left:-18px;top:3px;width:260px;mix-blend-mode:screen;opacity:.94;z-index:2;transform:rotate(-5deg)}
+.asset-note-mess-magic{right:-15px;bottom:-2px;width:170px;mix-blend-mode:screen;z-index:4;transform:rotate(7deg)}
+.asset-about-book-mug{left:-35px;right:-15px;bottom:-25px;width:112%;mix-blend-mode:screen;opacity:.9;z-index:1}
+.final-about-left:has(.asset-about-polaroid:not([hidden])) .final-polaroid-frame{opacity:.12}
+.final-about-left:has(.asset-note-mess-magic:not([hidden])) .final-hand-note{opacity:0}
+.final-about-right:has(.asset-about-book-mug:not([hidden])) .final-mug,.final-about-right:has(.asset-about-book-mug:not([hidden])) .final-books-right,.final-about-right:has(.asset-about-book-mug:not([hidden])) .final-candle-right,.final-about-right:has(.asset-about-book-mug:not([hidden])) .crystal-right{opacity:.08}
+
+@media(max-width:1100px){
+  .asset-hero-world{left:20%;width:88vw}
+  .asset-celestial-chain{left:24%;width:70vw}
+  .asset-lanterns-top{width:52vw}
+  .asset-note-moments{display:none}
+}
+@media(max-width:760px){
+  .asset-hero-world{left:-8%;bottom:23%;width:118vw;opacity:.64}
+  .asset-hero-moon{right:-72px;top:50px;width:390px}
+  .asset-celestial-chain{left:7%;top:34px;width:90vw;opacity:.45}
+  .asset-lanterns-top{display:none}
+  .asset-logo-main{margin:0 auto 2px;width:min(94vw,620px)}
+  .asset-crow-on-books{width:115%;left:-15%}
+  .asset-paths-floral-border{top:-55px;height:90px}
+  .asset-about-polaroid,.asset-note-mess-magic,.asset-about-book-mug{display:none}
+}
