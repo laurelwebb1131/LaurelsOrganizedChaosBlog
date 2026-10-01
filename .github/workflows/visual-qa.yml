@@ -1,0 +1,58 @@
+name: Visual QA screenshots
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [homepage-final-mockup]
+    paths:
+      - 'src/routes/index.tsx'
+      - 'src/styles.css'
+      - 'src/components/site.tsx'
+      - 'src/lib/theme-assets.ts'
+      - 'public/assets/loc/**'
+      - 'scripts/visual-qa-supabase.mjs'
+      - '.github/workflows/visual-qa.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  screenshots:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: homepage-final-mockup
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+      - run: bun install --frozen-lockfile
+      - name: Install Chromium
+        run: npx -y playwright@1.55.0 install --with-deps chromium
+      - name: Start fixture API
+        run: node scripts/visual-qa-supabase.mjs > /tmp/mock.log 2>&1 &
+      - name: Start app
+        env:
+          SUPABASE_URL: http://127.0.0.1:54321
+          SUPABASE_PUBLISHABLE_KEY: visual-qa-anon-key
+        run: bun run dev -- --host 127.0.0.1 > /tmp/app.log 2>&1 &
+      - name: Wait for homepage
+        run: |
+          for i in {1..60}; do
+            if curl -fsS http://127.0.0.1:5173/ >/dev/null; then exit 0; fi
+            sleep 2
+          done
+          cat /tmp/mock.log || true
+          cat /tmp/app.log || true
+          exit 1
+      - name: Capture approved-size desktop
+        run: npx -y playwright@1.55.0 screenshot --browser=chromium --viewport-size="1102,1408" --full-page http://127.0.0.1:5173/ qa-desktop.png
+      - name: Capture mobile
+        run: npx -y playwright@1.55.0 screenshot --browser=chromium --viewport-size="390,844" --full-page http://127.0.0.1:5173/ qa-mobile.png
+      - uses: actions/upload-artifact@v4
+        with:
+          name: homepage-visual-qa
+          path: |
+            qa-desktop.png
+            qa-mobile.png
+          retention-days: 7
