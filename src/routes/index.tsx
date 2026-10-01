@@ -1,59 +1,182 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
 import { useSuspenseQuery } from '@tanstack/react-query'
-import { ArrowUpRight, Moon, Star, Sparkles, ArrowRight } from 'lucide-react'
-import { Owl, Crow, Web, Potion, Staple } from '@/components/doodles'
+import { ArrowRight, Moon, Sparkles, Star } from 'lucide-react'
 import { contentQuery } from '@/lib/content'
-import { Shell, SectionLabel, CategoryIcon, PostCard, EmptyJournal, art } from '@/components/site'
+import { Shell, CategoryIcon, PostCard, EmptyJournal, art } from '@/components/site'
 
-export const Route = createFileRoute('/')({ loader: ({context}) => context.queryClient.ensureQueryData(contentQuery), head: () => ({meta:[{title:"Laurel's Organized Chaos — A magical scrapbook"},{name:'description',content:'Stories, snapshots, and little bits of magic from Laurel’s Organized Chaos.'},{property:'og:title',content:"Laurel's Organized Chaos"},{property:'og:description',content:'Stories, snapshots, and little bits of magic.'},{property:'og:type',content:'website'},{name:'twitter:card',content:'summary_large_image'}]}), component: Home })
-
-function Polaroid({photo,index}:{photo:{id:string,image_url:string,alt_text:string,caption:string},index:number}) {
- return <figure className={`polaroid polaroid-${index}`}><span className="polaroid-tape"/><img src={photo.image_url} alt={photo.alt_text || photo.caption}/><figcaption>{photo.caption}</figcaption></figure>
-}
+export const Route = createFileRoute('/')({
+  loader: ({ context }) => context.queryClient.ensureQueryData(contentQuery),
+  head: () => ({
+    meta: [
+      { title: "Laurel's Organized Chaos — Life, creativity & beautifully organized chaos" },
+      { name: 'description', content: 'A creative home for real life, creativity, curiosity, projects, reviews, and the beautifully chaotic parts in between.' },
+      { property: 'og:title', content: "Laurel's Organized Chaos" },
+      { property: 'og:description', content: 'Real life, creativity, curiosity, projects, reviews, and a little bit of magic in between.' },
+      { property: 'og:type', content: 'website' },
+      { name: 'twitter:card', content: 'summary_large_image' },
+    ],
+  }),
+  component: Home,
+})
 
 function Home() {
- const {data} = useSuspenseQuery(contentQuery)
- const {posts,categories,settings,photos,currently,notes} = data
- const featured = posts.find(p => p.id===settings?.featured_post_id) ?? posts[0]
- const links = (settings?.social_links ?? {}) as Record<string,string>
- return <Shell links={links}><main className="scrapbook-home">
-  <section className="scrapbook-masthead wrap">
-   <Web className="masthead-web"/><span className="masthead-moon" aria-hidden="true">☾</span><Crow className="masthead-crow"/>
-   <div className="masthead-copy"><p className="eyebrow"><Star size={14}/> A journal of the beautifully unfinished <Star size={14}/></p><h1><span className="hero-script">Laurel's</span><span className="hero-block">ORGANIZED <em>CHAOS</em></span></h1><div className="masthead-tagline"><span>✦</span><p>{settings?.tagline || 'A little magic in the mess.'}</p><span>☾</span></div><p className="hero-intro">{settings?.intro}</p></div>
-   <div className="masthead-art"><img src={art} alt="Illustrated crow perched on a crescent moon, among crystals and wildflowers"/><span>keeper of little things / fig. 01</span></div>
-   <span className="scribble-note scribble-hero">midnight thoughts, paper scraps &amp; a little magic</span>
-  </section>
-  <div className="marquee"><span>✦ LIFE IS A LITTLE MESSY ✦ AND THAT'S WHERE THE MAGIC LIVES ✦ LIFE IS A LITTLE MESSY ✦ AND THAT'S WHERE THE MAGIC LIVES ✦</span></div>
+  const { data } = useSuspenseQuery(contentQuery)
+  const { posts, categories, settings } = data
+  const links = (settings?.social_links ?? {}) as Record<string, string>
 
-  <section className="collage-stage wrap">
-   <div className="collage-stars" aria-hidden="true">✦ · ☾ · ✧</div>
-   <div className="collage-photos">
-    <SectionLabel number="01">little moments</SectionLabel><span className="washi washi-pink"/><span className="pressed-flower" aria-hidden="true">❋</span>
-    <div className="polaroid-cluster">{photos.length ? photos.slice(0,3).map((photo,i)=><Polaroid key={photo.id} photo={photo} index={i}/>) : <><figure className="polaroid polaroid-0 placeholder-polaroid"><div className="photo-placeholder"><Sparkles/><span>add a favorite moment</span></div><figcaption>your photos live here ♡</figcaption></figure><figure className="polaroid polaroid-1 placeholder-polaroid"><div className="photo-placeholder"><Moon/><span>add another snapshot</span></div><figcaption>saved for later ✷</figcaption></figure></>}</div>
-    <p className="cluster-caption">little moments, kept forever ↗</p><div className="mini-scrap">✦ collected along the way</div>
-   </div>
+  return (
+    <Shell links={links}>
+      <main className="final-home">
+        <section className="final-hero" aria-labelledby="home-title">
+          <div className="final-hero-stars" aria-hidden="true" />
+          <div className="final-hero-vines final-vines-left" aria-hidden="true">❋ ✦ ❋</div>
+          <div className="final-hero-vines final-vines-right" aria-hidden="true">❋ ✦ ❋</div>
 
-   <div className="collage-feature">
-    <SectionLabel number="02">featured from the journal</SectionLabel><Crow className="doodle-crow-feature"/><span className="sticker sticker-feature">fresh ink!</span>
-    {featured ? <Link className="feature-clip" to="/blog/$slug" params={{slug:featured.slug}}><span className="clip-tape"/><Staple className="staple-a"/>{featured.featured_image&&<div className="feature-image"><img src={featured.featured_image} alt={featured.featured_image_alt || featured.title}/></div>}<div className="feature-inner"><span className="tiny-label">LATEST STORY ✦ {featured.published_at && new Date(featured.published_at).toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'})}</span><h2>{featured.title}</h2><p>{featured.excerpt}</p><span className="feature-button">Read the post <ArrowUpRight size={17}/></span></div></Link> : <div className="feature-clip feature-empty"><span className="clip-tape"/><Staple className="staple-a"/><div className="feature-inner"><span className="tiny-label">A BLANK PAGE, FOR NOW</span><h2>Every story starts somewhere.</h2><p>Add the first journal entry in the owner area and it will appear here.</p><Link className="feature-button" to="/about">Meet Laurel <ArrowUpRight size={17}/></Link></div></div>}
-    <div className="feature-side-note">read me<br/><span>↳</span></div><span className="moon-phases" aria-hidden="true">● ◐ ○ ◑ ●</span>
-   </div>
+          <div className="final-lantern final-lantern-left" aria-hidden="true">✦</div>
+          <div className="final-lantern final-lantern-right" aria-hidden="true">✦</div>
 
-   <aside className="collage-about">
-    <div className="about-tarot"><Potion className="doodle-potion"/><Owl className="doodle-owl-tarot"/><div className="tarot-inner"><div className="tarot-top">✦ THE PERSON BEHIND THE PAGES ✦</div><div className="tarot-corners" aria-hidden="true">☾ ✧ ☽</div><div className="tarot-illustration">{settings?.about_image?<img src={settings.about_image} alt="Portrait of Laurel"/>:<img src={art} alt="Illustrated crow and crescent moon"/>}</div><div className="tarot-moon">☾ ✧ ☽</div><h2>About Me</h2><p>{settings?.about_preview || 'Add a short introduction in the owner area.'}</p><Link className="tarot-button" to="/about">More about me <ArrowUpRight size={15}/></Link></div></div>
-    {notes.slice(0,1).map(note=><div key={note.id} className="note-scrap scrap-0"><span>✳ A LITTLE NOTE</span><p>{note.body}</p><span className="note-star">✦</span></div>)}
-   </aside>
-  </section>
+          <div className="final-moon" aria-hidden="true">
+            <span className="final-moon-craters" />
+          </div>
 
-  <section className="currently-spread wrap">
-   <div className="currently-card"><Owl className="doodle-owl-currently"/><Staple className="staple-b"/><span className="notebook-tape"/><div className="card-holes"><span/><span/><span/><span/></div><span className="currently-date">A LITTLE LIFE UPDATE / RIGHT NOW</span><h2>Currently<span>...</span></h2><div className="currently-list">{currently.length ? currently.map(item=><div key={item.id}><strong>{item.label}</strong><span>{item.value}</span></div>) : <div className="currently-empty"><strong>Waiting</strong><span>Add your current favorites in the owner area.</span></div>}</div><span className="currently-doodle">✳ ☾ ✳</span></div>
-   <div className="currently-notes"><span className="side-scribble">notes from the margins →</span>{notes.slice(1,3).map((note,i)=><div key={note.id} className={`note-scrap scrap-${(i+1)%2}`}><span>✳ PINNED THOUGHT</span><p>{note.body}</p><span className="note-star">✦</span></div>)}<Crow className="currently-crow"/></div>
-  </section>
+          <div className="final-skyline" aria-hidden="true">
+            <span className="castle castle-a" />
+            <span className="castle castle-b" />
+            <span className="castle castle-c" />
+            <span className="ferris-wheel"><i/><i/><i/><i/></span>
+            <span className="carnival-tent tent-a" />
+            <span className="carnival-tent tent-b" />
+            <span className="light-string lights-a" />
+            <span className="light-string lights-b" />
+          </div>
 
-  <section className="explore-band"><div className="wrap"><Web className="doodle-web-explore"/><Crow className="explore-crow"/><SectionLabel number="03">explore the chaos</SectionLabel><div className="explore-heading"><h2>Pick a path,<br/><em>follow the magic.</em></h2><p>Some things fit neatly in a box.<br/>These are not those things.</p></div><div className="category-grid">{categories.map((c,i)=><Link key={c.id} to="/blog" search={{category:c.slug}} className={`category-card category-${i%4}`}><span className="category-spark">{['✧','☾','✦','✷'][i%4]}</span><div className="category-icon"><CategoryIcon icon={c.icon}/></div><span className="category-index">0{i+1} / THE COLLECTION</span><h3>{c.name}</h3><p>{c.description}</p><ArrowUpRight className="category-arrow" size={20}/></Link>)}</div></div></section>
+          <div className="final-water" aria-hidden="true" />
 
-  <section className="recent-paper"><div className="wrap recent-inner"><span className="recent-tape"/><SectionLabel number="04">fresh ink &amp; recent stories</SectionLabel><div className="recent-heading"><h2>Torn from the <em>journal.</em></h2><span>newest pages / filed imperfectly</span></div><div className="post-grid recent-grid">{posts.length ? posts.slice(0,3).map(post=><PostCard key={post.id} post={post} category={categories.find(c=>c.id===post.category_id)?.name}/>) : <EmptyJournal/>}</div><Link className="all-posts-link" to="/blog">View all posts <ArrowRight size={18}/></Link></div></section>
+          <div className="final-crow-scene">
+            <img src={art} alt="" aria-hidden="true" className="final-crow-art" />
+            <div className="final-book-stack" aria-hidden="true"><span/><span/><span/></div>
+            <div className="final-crystal cluster-a" aria-hidden="true">◆</div>
+            <div className="final-crystal cluster-b" aria-hidden="true">◆</div>
+          </div>
 
-  <section className="closing wrap"><Owl className="doodle-owl-closing"/><div>✷ &nbsp;✦ &nbsp;☾</div><p>There is beauty in the <em>beautifully unfinished.</em></p><Link to="/contact">Leave a little note <ArrowUpRight size={18}/></Link></section>
- </main></Shell>
+          <aside className="final-paper-note final-note-left" aria-label="What you can find here">
+            <span>REAL LIFE</span>
+            <span>CREATIVE PROJECTS</span>
+            <span>HONEST REVIEWS</span>
+            <span>PLACES I EXPLORE</span>
+            <span>AND EVERYTHING</span>
+            <span>IN BETWEEN.</span>
+            <b>♡</b>
+          </aside>
+
+          <aside className="final-signpost" aria-hidden="true">
+            <span>SAME MESS</span>
+            <span>DIFFERENT MAGIC</span>
+            <b>♡</b>
+          </aside>
+
+          <div className="final-title-wrap">
+            <div className="final-celestial-crown" aria-hidden="true">☾ ✦</div>
+            <h1 id="home-title">
+              <span className="final-title-script">Laurel's</span>
+              <span className="final-title-block">ORGANIZED CHAOS</span>
+            </h1>
+            <div className="final-intro-paper">
+              <p>{settings?.intro || settings?.tagline || 'A creative home for real life, creativity, curiosity, and the beautifully chaotic parts in between.'}</p>
+              <span aria-hidden="true">♡</span>
+            </div>
+            <Link className="final-primary-cta" to="/blog">Explore the Blog <ArrowRight size={17}/></Link>
+          </div>
+
+          <aside className="final-paper-note final-note-right" aria-hidden="true">
+            Curious<br/>Creative<br/>Always<br/>A Work<br/>in Progress
+            <b>♡</b>
+          </aside>
+        </section>
+
+        <section className="final-paths" aria-label="Explore Laurel's Organized Chaos">
+          <div className="final-path-grid">
+            {categories.slice(0, 5).map((category, index) => (
+              <Link
+                key={category.id}
+                to="/blog"
+                search={{ category: category.slug }}
+                className="final-path-card"
+              >
+                <div className="final-path-art" aria-hidden="true">
+                  <span className={"path-glow path-glow-" + (index % 5)} />
+                  <CategoryIcon icon={category.icon} />
+                  <span className="path-sparkles">✦ ☾ ✧</span>
+                </div>
+                <div className="final-path-label">{category.name} <span>♡</span></div>
+                <p>{category.description}</p>
+                <span className="final-path-arrow" aria-hidden="true">→</span>
+              </Link>
+            ))}
+            <Link to="/blog" className="final-path-card final-all-posts-card">
+              <div className="final-path-art" aria-hidden="true">
+                <Moon />
+                <Star />
+                <Sparkles />
+              </div>
+              <div className="final-path-label">All Posts <span>♡</span></div>
+              <p>Browse the full archive of blog posts.</p>
+              <span className="final-path-arrow" aria-hidden="true">→</span>
+            </Link>
+          </div>
+        </section>
+
+        <section className="final-latest-section" aria-labelledby="latest-title">
+          <div className="final-paper-edge final-paper-edge-top" aria-hidden="true" />
+          <div className="final-latest-inner">
+            <div className="final-margin-note final-margin-left" aria-hidden="true">Collect<br/>Moments<br/>Not Things<br/>♡</div>
+            <header className="final-section-heading">
+              <span aria-hidden="true">☾</span>
+              <h2 id="latest-title">Latest from the Blog</h2>
+              <span className="final-heading-stars" aria-hidden="true">✦ ✧ ✦</span>
+              <Link to="/blog">View all posts →</Link>
+            </header>
+
+            <div className="final-latest-grid">
+              {posts.length ? posts.slice(0, 3).map((post) => (
+                <PostCard
+                  key={post.id}
+                  post={post}
+                  category={categories.find((category) => category.id === post.category_id)?.name}
+                />
+              )) : <EmptyJournal />}
+            </div>
+
+            <div className="final-polaroid-stack" aria-hidden="true">
+              <span className="mini-polaroid mini-polaroid-a">☾</span>
+              <span className="mini-polaroid mini-polaroid-b">✦</span>
+            </div>
+          </div>
+        </section>
+
+        <section className="final-about-section" aria-labelledby="about-home-title">
+          <div className="final-about-decor final-about-left" aria-hidden="true">
+            <span className="final-crystal big-crystal">◆</span>
+            <span className="final-candle">✦</span>
+            <span className="final-polaroid-frame"><img src={settings?.about_image || art} alt="" /></span>
+            <span className="final-hand-note">same mess<br/>different magic ♡</span>
+          </div>
+
+          <div className="final-about-paper">
+            <span className="final-paper-pin" aria-hidden="true">✦</span>
+            <h2 id="about-home-title">About Laurel</h2>
+            <p>{settings?.about_preview || 'This is my corner of the internet where I share real life, what I am learning, making, trying, loving, and figuring out as I go.'}</p>
+            <Link className="final-primary-cta final-about-cta" to="/about">Read My Story <ArrowRight size={16}/></Link>
+          </div>
+
+          <div className="final-about-decor final-about-right" aria-hidden="true">
+            <span className="final-mug">☾</span>
+            <div className="final-book-stack final-books-right"><span>IDEAS</span><span>PLACES</span><span>PEOPLE</span><span>POSSIBILITIES</span></div>
+            <span className="final-candle final-candle-right">✦</span>
+            <span className="final-crystal big-crystal crystal-right">◆</span>
+          </div>
+        </section>
+      </main>
+    </Shell>
+  )
 }
