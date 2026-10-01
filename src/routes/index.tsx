@@ -2,7 +2,12 @@ import { createFileRoute, Link } from '@tanstack/react-router'
 import { useSuspenseQuery } from '@tanstack/react-query'
 import { ArrowRight, Moon, Sparkles, Star } from 'lucide-react'
 import { contentQuery } from '@/lib/content'
+import { themeAssets } from '@/lib/theme-assets'
 import { Shell, CategoryIcon, PostCard, EmptyJournal, art } from '@/components/site'
+
+function DecorativeAsset({ src, className, loading = 'lazy' }: { src: string; className: string; loading?: 'eager' | 'lazy' }) {
+  return <img src={src} alt="" aria-hidden="true" className={`final-generated-asset ${className}`} loading={loading} onError={(event) => { event.currentTarget.hidden = true }} />
+}
 
 export const Route = createFileRoute('/')({
   loader: ({ context }) => context.queryClient.ensureQueryData(contentQuery),
@@ -34,10 +39,14 @@ function Home() {
 
           <div className="final-lantern final-lantern-left" aria-hidden="true">✦</div>
           <div className="final-lantern final-lantern-right" aria-hidden="true">✦</div>
+          <DecorativeAsset src={themeAssets.lanternsTop} className="asset-lanterns-top" loading="eager" />
+          <DecorativeAsset src={themeAssets.celestialChain} className="asset-celestial-chain" loading="eager" />
 
           <div className="final-moon" aria-hidden="true">
             <span className="final-moon-craters" />
           </div>
+          <DecorativeAsset src={themeAssets.heroMoon} className="asset-hero-moon" loading="eager" />
+          <DecorativeAsset src={themeAssets.heroWorld} className="asset-hero-world" loading="eager" />
 
           <div className="final-skyline" aria-hidden="true">
             <span className="castle castle-a" />
@@ -53,7 +62,8 @@ function Home() {
           <div className="final-water" aria-hidden="true" />
 
           <div className="final-crow-scene">
-            <img src={art} alt="" aria-hidden="true" className="final-crow-art" />
+            <DecorativeAsset src={themeAssets.crowOnBooks} className="asset-crow-on-books" loading="eager" />
+            <img src={art} alt="" aria-hidden="true" className="final-crow-art final-crow-fallback" />
             <div className="final-book-stack" aria-hidden="true"><span/><span/><span/></div>
             <div className="final-crystal cluster-a" aria-hidden="true">◆</div>
             <div className="final-crystal cluster-b" aria-hidden="true">◆</div>
@@ -77,7 +87,8 @@ function Home() {
 
           <div className="final-title-wrap">
             <div className="final-celestial-crown" aria-hidden="true">☾ ✦</div>
-            <h1 id="home-title">
+            <DecorativeAsset src={themeAssets.logoMain} className="asset-logo-main" loading="eager" />
+            <h1 id="home-title" className="final-title-text-fallback">
               <span className="final-title-script">Laurel's</span>
               <span className="final-title-block">ORGANIZED CHAOS</span>
             </h1>
@@ -95,6 +106,7 @@ function Home() {
         </section>
 
         <section className="final-paths" aria-label="Explore Laurel's Organized Chaos">
+          <DecorativeAsset src={themeAssets.floralBorder} className="asset-paths-floral-border" />
           <div className="final-path-grid">
             {categories.slice(0, 5).map((category, index) => (
               <Link
@@ -129,6 +141,7 @@ function Home() {
         <section className="final-latest-section" aria-labelledby="latest-title">
           <div className="final-paper-edge final-paper-edge-top" aria-hidden="true" />
           <div className="final-latest-inner">
+            <DecorativeAsset src={themeAssets.noteMoments} className="asset-note-moments" />
             <div className="final-margin-note final-margin-left" aria-hidden="true">Collect<br/>Moments<br/>Not Things<br/>♡</div>
             <header className="final-section-heading">
               <span aria-hidden="true">☾</span>
@@ -156,6 +169,8 @@ function Home() {
 
         <section className="final-about-section" aria-labelledby="about-home-title">
           <div className="final-about-decor final-about-left" aria-hidden="true">
+            <DecorativeAsset src={themeAssets.aboutPolaroid} className="asset-about-polaroid" />
+            <DecorativeAsset src={themeAssets.noteMessMagic} className="asset-note-mess-magic" />
             <span className="final-crystal big-crystal">◆</span>
             <span className="final-candle">✦</span>
             <span className="final-polaroid-frame"><img src={settings?.about_image || art} alt="" /></span>
@@ -170,6 +185,7 @@ function Home() {
           </div>
 
           <div className="final-about-decor final-about-right" aria-hidden="true">
+            <DecorativeAsset src={themeAssets.aboutBookMug} className="asset-about-book-mug" />
             <span className="final-mug">☾</span>
             <div className="final-book-stack final-books-right"><span>IDEAS</span><span>PLACES</span><span>PEOPLE</span><span>POSSIBILITIES</span></div>
             <span className="final-candle final-candle-right">✦</span>
