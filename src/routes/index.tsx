@@ -48,6 +48,8 @@ function Home() {
           </div>
           <DecorativeAsset src={themeAssets.heroMoon} className="asset-hero-moon" loading="eager" />
           <DecorativeAsset src={themeAssets.heroWorld} className="asset-hero-world" loading="eager" />
+          <DecorativeAsset src={themeAssets.openGrimoire} className="asset-hero-grimoire" loading="eager" />
+          <DecorativeAsset src={themeAssets.candleLantern} className="asset-hero-right-cluster" loading="eager" />
 
           <div className="final-skyline" aria-hidden="true">
             <span className="castle castle-a" />
@@ -145,6 +147,8 @@ function Home() {
           <div className="final-paper-edge final-paper-edge-top" aria-hidden="true" />
           <div className="final-latest-inner">
             <DecorativeAsset src={themeAssets.noteMoments} className="asset-note-moments" />
+            <DecorativeAsset src={themeAssets.tarotSet} className="asset-latest-polaroids" />
+            <DecorativeAsset src={themeAssets.checklist} className="asset-latest-checklist" />
             <div className="final-margin-note final-margin-left" aria-hidden="true">Collect<br/>Moments<br/>Not Things<br/>♡</div>
             <header className="final-section-heading">
               <span aria-hidden="true">☾</span>
