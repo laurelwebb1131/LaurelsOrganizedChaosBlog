@@ -2,9 +2,9 @@ import http from 'node:http'
 
 const now = new Date().toISOString()
 const posts = [
-  { id:'p1', slug:'finding-beauty-in-the-chaos', title:'Finding Beauty in the Chaos', excerpt:'Real life, imperfect and still worth noticing.', body:'<p>Visual QA fixture.</p>', category_id:'c1', status:'published', published_at:now, featured_image:null, featured_image_alt:null },
-  { id:'p2', slug:'a-little-something-i-made', title:'A Little Something I Made', excerpt:'A creative project from the messy middle.', body:'<p>Visual QA fixture.</p>', category_id:'c2', status:'published', published_at:now, featured_image:null, featured_image_alt:null },
-  { id:'p3', slug:'honest-thoughts-a-product-i-tried', title:'Honest Thoughts: A Product I Tried', excerpt:'A straightforward review from real use.', body:'<p>Visual QA fixture.</p>', category_id:'c3', status:'published', published_at:now, featured_image:null, featured_image_alt:null },
+  { id:'p1', slug:'finding-beauty-in-the-chaos', title:'Finding Beauty in the Chaos', excerpt:'Real life, imperfect and still worth noticing.', body:'<p>Visual QA fixture.</p>', category_id:'c1', status:'published', published_at:now, featured_image:'http://127.0.0.1:3000/assets/loc/latest-card-life.webp', featured_image_alt:'Moonlit carnival scene' },
+  { id:'p2', slug:'a-little-something-i-made', title:'A Little Something I Made', excerpt:'A creative project from the messy middle.', body:'<p>Visual QA fixture.</p>', category_id:'c2', status:'published', published_at:now, featured_image:'http://127.0.0.1:3000/assets/loc/latest-card-creative.webp', featured_image_alt:'Creative books, crystals and candle scene' },
+  { id:'p3', slug:'honest-thoughts-a-product-i-tried', title:'Honest Thoughts: A Product I Tried', excerpt:'A straightforward review from real use.', body:'<p>Visual QA fixture.</p>', category_id:'c3', status:'published', published_at:now, featured_image:'http://127.0.0.1:3000/assets/loc/latest-card-reviews.webp', featured_image_alt:'Moonlit review scene' },
 ]
 const categories = [
   { id:'c1', name:'Life', slug:'life', description:'Thoughts, routines and everyday chaos in between.', icon:'star', visible:true, sort_order:1 },
