@@ -28,6 +28,7 @@ function Home() {
   const { data } = useSuspenseQuery(contentQuery)
   const { posts, categories, settings } = data
   const links = (settings?.social_links ?? {}) as Record<string, string>
+  const pathArt = [themeAssets.heroWorld, themeAssets.candleLantern, themeAssets.bookStackCrystal, themeAssets.ferrisWheel, themeAssets.openGrimoire]
 
   return (
     <Shell links={links}>
@@ -116,6 +117,7 @@ function Home() {
                 className="final-path-card"
               >
                 <div className="final-path-art" aria-hidden="true">
+                  <DecorativeAsset src={pathArt[index] || themeAssets.crystalClusters} className="asset-path-card-scene" />
                   <span className={"path-glow path-glow-" + (index % 5)} />
                   <CategoryIcon icon={category.icon} />
                   <span className="path-sparkles">✦ ☾ ✧</span>
@@ -127,6 +129,7 @@ function Home() {
             ))}
             <Link to="/blog" className="final-path-card final-all-posts-card">
               <div className="final-path-art" aria-hidden="true">
+                <DecorativeAsset src={themeAssets.tarotSet} className="asset-path-card-scene" />
                 <Moon />
                 <Star />
                 <Sparkles />
