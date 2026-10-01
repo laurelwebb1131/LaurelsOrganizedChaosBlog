@@ -293,3 +293,18 @@
   .asset-note-mess-magic{width:105px}
   .asset-about-book-mug{bottom:-5px}
 }
+
+
+/* Precision pass 3: scrapbook side details and target journal width */
+@media (min-width:761px){
+  .asset-hero-grimoire{z-index:3;left:20%;bottom:0;width:190px;opacity:.82;transform:rotate(-4deg);filter:drop-shadow(0 9px 10px rgba(0,0,0,.45))}
+  .asset-hero-right-cluster{z-index:3;right:1.5%;bottom:1%;width:170px;opacity:.78;filter:drop-shadow(0 10px 12px rgba(0,0,0,.48))}
+  .final-latest-grid{width:min(760px,78%);margin-inline:auto}
+  .final-section-heading{padding-left:190px}
+  .asset-latest-polaroids{left:-77px;top:26px;width:150px;z-index:3;transform:rotate(-5deg);opacity:.82}
+  .asset-latest-checklist{right:-84px;top:38px;width:128px;z-index:3;transform:rotate(5deg);opacity:.95}
+  .asset-note-moments{left:-70px;top:135px;width:105px;z-index:4}
+}
+@media (max-width:760px){
+  .asset-hero-grimoire,.asset-hero-right-cluster,.asset-latest-polaroids,.asset-latest-checklist{display:none}
+}
