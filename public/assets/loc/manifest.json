@@ -1,0 +1,432 @@
+{
+  "generatedFrom": "Laurels Organized Chaos approved asset pack",
+  "assets": {
+    "logo-main.webp": {
+      "source": "atlas-critical.webp",
+      "x": 8,
+      "y": 48,
+      "w": 496,
+      "h": 304
+    },
+    "hero-full-moon.webp": {
+      "source": "atlas-critical.webp",
+      "x": 560,
+      "y": 8,
+      "w": 415,
+      "h": 384
+    },
+    "hero-castle-carnival.webp": {
+      "source": "atlas-critical.webp",
+      "x": 1032,
+      "y": 43,
+      "w": 496,
+      "h": 314
+    },
+    "crow-on-books.webp": {
+      "source": "atlas-critical.webp",
+      "x": 1615,
+      "y": 8,
+      "w": 353,
+      "h": 384
+    },
+    "lantern-row-top.webp": {
+      "source": "atlas-critical.webp",
+      "x": 8,
+      "y": 506,
+      "w": 496,
+      "h": 187
+    },
+    "celestial-chain-banner.webp": {
+      "source": "atlas-critical.webp",
+      "x": 520,
+      "y": 505,
+      "w": 496,
+      "h": 190
+    },
+    "floral-celestial-border.webp": {
+      "source": "atlas-critical.webp",
+      "x": 1032,
+      "y": 533,
+      "w": 496,
+      "h": 133
+    },
+    "paper-note-moments.webp": {
+      "source": "atlas-critical.webp",
+      "x": 1637,
+      "y": 435,
+      "w": 310,
+      "h": 330
+    },
+    "about-polaroid.webp": {
+      "source": "atlas-critical.webp",
+      "x": 107,
+      "y": 808,
+      "w": 298,
+      "h": 384
+    },
+    "paper-note-mess-magic.webp": {
+      "source": "atlas-critical.webp",
+      "x": 618,
+      "y": 830,
+      "w": 300,
+      "h": 340
+    },
+    "about-book-mug.webp": {
+      "source": "atlas-critical.webp",
+      "x": 1097,
+      "y": 808,
+      "w": 366,
+      "h": 384
+    },
+    "nav-bar.webp": {
+      "source": "atlas-critical.webp",
+      "x": 1544,
+      "y": 946,
+      "w": 496,
+      "h": 107
+    },
+    "category-cards-row.webp": {
+      "source": "atlas-critical.webp",
+      "x": 8,
+      "y": 1322,
+      "w": 496,
+      "h": 155
+    },
+    "latest-heading.webp": {
+      "source": "atlas-critical.webp",
+      "x": 520,
+      "y": 1347,
+      "w": 496,
+      "h": 106
+    },
+    "about-card.webp": {
+      "source": "atlas-extras.webp",
+      "x": 6,
+      "y": 42,
+      "w": 212,
+      "h": 125
+    },
+    "admit-one-ticket.webp": {
+      "source": "atlas-extras.webp",
+      "x": 230,
+      "y": 52,
+      "w": 212,
+      "h": 106
+    },
+    "boats.webp": {
+      "source": "atlas-extras.webp",
+      "x": 454,
+      "y": 69,
+      "w": 212,
+      "h": 71
+    },
+    "book-stack-crystal.webp": {
+      "source": "atlas-extras.webp",
+      "x": 678,
+      "y": 40,
+      "w": 212,
+      "h": 130
+    },
+    "book-stack-floral-left.webp": {
+      "source": "atlas-extras.webp",
+      "x": 902,
+      "y": 37,
+      "w": 212,
+      "h": 136
+    },
+    "book-stack-large.webp": {
+      "source": "atlas-extras.webp",
+      "x": 1126,
+      "y": 26,
+      "w": 212,
+      "h": 158
+    },
+    "candle-ink-books.webp": {
+      "source": "atlas-extras.webp",
+      "x": 6,
+      "y": 231,
+      "w": 212,
+      "h": 168
+    },
+    "candle-lantern-cluster.webp": {
+      "source": "atlas-extras.webp",
+      "x": 230,
+      "y": 247,
+      "w": 212,
+      "h": 135
+    },
+    "candles.webp": {
+      "source": "atlas-extras.webp",
+      "x": 454,
+      "y": 262,
+      "w": 212,
+      "h": 106
+    },
+    "category-icons-row.webp": {
+      "source": "atlas-extras.webp",
+      "x": 678,
+      "y": 282,
+      "w": 212,
+      "h": 65
+    },
+    "celestial-garland.webp": {
+      "source": "atlas-extras.webp",
+      "x": 902,
+      "y": 278,
+      "w": 212,
+      "h": 74
+    },
+    "charms-right.webp": {
+      "source": "atlas-extras.webp",
+      "x": 1167,
+      "y": 216,
+      "w": 129,
+      "h": 198
+    },
+    "clouds.webp": {
+      "source": "atlas-extras.webp",
+      "x": 6,
+      "y": 491,
+      "w": 212,
+      "h": 67
+    },
+    "corner-flourish.webp": {
+      "source": "atlas-extras.webp",
+      "x": 230,
+      "y": 474,
+      "w": 212,
+      "h": 101
+    },
+    "crow-standing.webp": {
+      "source": "atlas-extras.webp",
+      "x": 454,
+      "y": 445,
+      "w": 212,
+      "h": 160
+    },
+    "crystal-clusters.webp": {
+      "source": "atlas-extras.webp",
+      "x": 678,
+      "y": 488,
+      "w": 212,
+      "h": 74
+    },
+    "dreamcatchers.webp": {
+      "source": "atlas-extras.webp",
+      "x": 902,
+      "y": 471,
+      "w": 212,
+      "h": 108
+    },
+    "ferris-wheel.webp": {
+      "source": "atlas-extras.webp",
+      "x": 1126,
+      "y": 435,
+      "w": 212,
+      "h": 180
+    },
+    "floral-divider.webp": {
+      "source": "atlas-extras.webp",
+      "x": 6,
+      "y": 708,
+      "w": 212,
+      "h": 54
+    },
+    "floral-vines.webp": {
+      "source": "atlas-extras.webp",
+      "x": 230,
+      "y": 664,
+      "w": 212,
+      "h": 141
+    },
+    "keys-row.webp": {
+      "source": "atlas-extras.webp",
+      "x": 454,
+      "y": 706,
+      "w": 212,
+      "h": 57
+    },
+    "lantern-row-middle.webp": {
+      "source": "atlas-extras.webp",
+      "x": 678,
+      "y": 701,
+      "w": 212,
+      "h": 68
+    },
+    "latest-card-creative.webp": {
+      "source": "atlas-extras.webp",
+      "x": 914,
+      "y": 636,
+      "w": 187,
+      "h": 198
+    },
+    "latest-card-life.webp": {
+      "source": "atlas-extras.webp",
+      "x": 1138,
+      "y": 636,
+      "w": 187,
+      "h": 198
+    },
+    "latest-card-reviews.webp": {
+      "source": "atlas-extras.webp",
+      "x": 12,
+      "y": 846,
+      "w": 200,
+      "h": 198
+    },
+    "logo-alt.webp": {
+      "source": "atlas-extras.webp",
+      "x": 230,
+      "y": 895,
+      "w": 212,
+      "h": 100
+    },
+    "moon-medallion.webp": {
+      "source": "atlas-extras.webp",
+      "x": 469,
+      "y": 846,
+      "w": 181,
+      "h": 198
+    },
+    "open-grimoire.webp": {
+      "source": "atlas-extras.webp",
+      "x": 678,
+      "y": 888,
+      "w": 212,
+      "h": 113
+    },
+    "ornate-border-strips.webp": {
+      "source": "atlas-extras.webp",
+      "x": 921,
+      "y": 846,
+      "w": 173,
+      "h": 198
+    },
+    "ornate-divider-gold.webp": {
+      "source": "atlas-extras.webp",
+      "x": 1126,
+      "y": 917,
+      "w": 212,
+      "h": 55
+    },
+    "paper-banner-center.webp": {
+      "source": "atlas-extras.webp",
+      "x": 6,
+      "y": 1109,
+      "w": 212,
+      "h": 91
+    },
+    "paper-banner-left.webp": {
+      "source": "atlas-extras.webp",
+      "x": 230,
+      "y": 1106,
+      "w": 212,
+      "h": 97
+    },
+    "paper-banner-right.webp": {
+      "source": "atlas-extras.webp",
+      "x": 454,
+      "y": 1105,
+      "w": 212,
+      "h": 99
+    },
+    "paper-card-set.webp": {
+      "source": "atlas-extras.webp",
+      "x": 678,
+      "y": 1132,
+      "w": 212,
+      "h": 46
+    },
+    "paper-checklist.webp": {
+      "source": "atlas-extras.webp",
+      "x": 921,
+      "y": 1056,
+      "w": 173,
+      "h": 198
+    },
+    "paper-mini-tags.webp": {
+      "source": "atlas-extras.webp",
+      "x": 1126,
+      "y": 1121,
+      "w": 212,
+      "h": 67
+    },
+    "paper-note-real-life.webp": {
+      "source": "atlas-extras.webp",
+      "x": 13,
+      "y": 1266,
+      "w": 198,
+      "h": 198
+    },
+    "potion-charms.webp": {
+      "source": "atlas-extras.webp",
+      "x": 230,
+      "y": 1335,
+      "w": 212,
+      "h": 60
+    },
+    "sealed-note.webp": {
+      "source": "atlas-extras.webp",
+      "x": 454,
+      "y": 1303,
+      "w": 212,
+      "h": 123
+    },
+    "small-celestial-charms.webp": {
+      "source": "atlas-extras.webp",
+      "x": 678,
+      "y": 1339,
+      "w": 212,
+      "h": 51
+    },
+    "tarot-polaroid-set.webp": {
+      "source": "atlas-extras.webp",
+      "x": 902,
+      "y": 1282,
+      "w": 212,
+      "h": 165
+    },
+    "tents-upper.webp": {
+      "source": "atlas-extras.webp",
+      "x": 1133,
+      "y": 1266,
+      "w": 198,
+      "h": 198
+    },
+    "ui-arrows.webp": {
+      "source": "atlas-extras.webp",
+      "x": 6,
+      "y": 1476,
+      "w": 212,
+      "h": 198
+    },
+    "view-all-button.webp": {
+      "source": "atlas-extras.webp",
+      "x": 230,
+      "y": 1534,
+      "w": 212,
+      "h": 82
+    },
+    "water-reflection.webp": {
+      "source": "atlas-extras.webp",
+      "x": 454,
+      "y": 1556,
+      "w": 212,
+      "h": 38
+    },
+    "wax-seal.webp": {
+      "source": "atlas-extras.webp",
+      "x": 678,
+      "y": 1483,
+      "w": 212,
+      "h": 184
+    },
+    "wisteria-vines.webp": {
+      "source": "atlas-extras.webp",
+      "x": 902,
+      "y": 1483,
+      "w": 212,
+      "h": 183
+    }
+  }
+}
