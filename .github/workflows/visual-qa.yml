@@ -28,7 +28,7 @@ jobs:
           bun-version: latest
       - run: bun install --frozen-lockfile
       - name: Install Chromium
-        run: npx -y playwright@1.55.0 install --with-deps chromium
+        run: npx -y playwright@1.55.0 install chromium
       - name: Start fixture API
         run: node scripts/visual-qa-supabase.mjs > /tmp/mock.log 2>&1 &
       - name: Start app
